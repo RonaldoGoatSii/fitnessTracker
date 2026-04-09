@@ -1,19 +1,49 @@
-* {
-    margin: 0;
-    padding: 554;
-    box-sizing: border-box;
-}       
+  
 
 body{
-    background-color: rgb(0, 0, 0);
+    background-color:#F8F9FA;
+    margin: 1px;
+    padding: 20px;
 }
 
-header{
+.header{
     color: aqua;
     background-color: white;
-    display: auto;;
+    padding: 20px;
 }
 
 body p{
     color: aqua;
+}
+
+li{
+    color: white;
+}
+
+.lista-exercicios {
+  list-style: none;
+  padding: 0;
+  width: 200px; /* largura definida para não ocupar o ecrã todo */
+  font-family: sans-serif;
+}
+
+.lista-exercicios li {
+  background-color: #0d10cc;
+  margin-bottom: 10px; /* espaço entre os exercícios */
+  padding: 15px;
+  border-radius: 8px; /* cantos arredondados */
+  cursor: pointer;
+  border-left: 5px solid #d8e91e;
+}
+
+.lista-exercicios li:hover {
+  background-color:#D90429; /* fica vermelho quando passo o rato nas opções */
+}
+
+.lista-treinos {
+    background-color: rgb(251, 251, 251);
+    color: rgb(219, 248, 3);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #ffffff;
 }
