@@ -6,7 +6,7 @@
 
 body {
     background-color: #121212;
-    color: #000000;
+    color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
@@ -14,13 +14,15 @@ body {
     min-height: 100vh;
 }
 
-.header, .lista-treinos-header {
+
+.header,
+.lista-treinos-header {
     width: 100%;
     text-align: center;
-    padding: 40px 20px;
-    background-color: #e4dede;
-    border-bottom: 3px solid #ff002b;
-    margin-bottom: 30px;
+    padding: 40px;
+    background-color: #1f1f1f;
+    border-bottom: 4px solid #ff0033;
+    margin-bottom: 20px;
 }
 
 h1, h3 {
@@ -30,67 +32,64 @@ h1, h3 {
 
 .container {
     width: 90%;
-    max-width: 400px;
+    max-width: 420px;
     text-align: center;
-}
-
-.card-inicio p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #cccccc;
 }
 
 .lista-exercicios {
     list-style: none;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding: 0;
 }
 
 .lista-exercicios li {
-    background-color: #957e7e;
+    background-color: #2a2a2a;
     margin-bottom: 12px;
-    padding: 18px;
+    padding: 16px;
     border-radius: 10px;
-    cursor: pointer;
-    border-left: 6px solid #D90429;
+    border-left: 5px solid #ff0033;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     font-weight: bold;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .lista-exercicios li:hover {
-    background-color: #527289;
-    transform: translateX(12px);
+    background-color: #333333;
+    transform: translateX(6px);
 }
 
 .lista-exercicios input[type="checkbox"] {
-    accent-color: #e90808;
+    accent-color: #ff0033;
     width: 18px;
     height: 18px;
 }
 
-.btn {  
-    background-color: #D90429;
-    color: white;
-    border: none;
-    padding: 15px 30px;
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 14px 20px;
     border-radius: 30px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
-    transition: opacity 0.2s;
-    width: 100%;
+    transition: 0.2s ease;
+    border: 2px solid #ff0033;
+    background-color: transparent;
+    color: #ffffff;
+    margin-top: 10px;
 }
 
 .btn:hover {
-    opacity: 0.8;
+    background-color: #ff0033;
+    color: #fff;
 }
 
-.btn-voltar {
-    background-color: transparent;
-    border: 2px solid #d40000;
-    margin-top: 10px;
+img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
