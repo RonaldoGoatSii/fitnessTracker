@@ -1,19 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de treinos</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<header class="lista-treinos">
-</header>
-<body>
-    <p></p>
-</body>
-
-</html><!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -27,17 +12,23 @@
     </header>
 
     <main class="container">
-        <ul class="lista-exercicios">
+        <div class="sessao-criar">
+            <input type="text" id="input-novo-treino" placeholder="Nome do exercício...">
+            <button id="btn-criar" class="btn">Criar Novo</button>
+        </div>
+
+        <ul class="lista-exercicios" id="lista-exercicios">
             <li><input type="checkbox"> Abs</li>
             <li><input type="checkbox"> Legs</li>
             <li><input type="checkbox"> Biceps</li>
             <li><input type="checkbox"> Triceps</li>
         </ul>
-        <a>
-            <button>Create new training</button>
-        </a>
+
         <a href="index.html">
             <button class="btn btn-voltar">Voltar</button>
         </a>
     </main>
+
+    <script src="script.js"></script>
+</body>
 </html>
