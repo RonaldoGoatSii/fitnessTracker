@@ -22,7 +22,7 @@ body {
     padding: 40px;
     background-color: #1f1f1f;
     border-bottom: 4px solid #ff0033;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 h1, h3 {
@@ -67,7 +67,7 @@ h1, h3 {
     height: 18px;
 }
 
-.btn {
+.btn, #create {
     display: inline-block;
     width: 100%;
     padding: 14px 20px;
@@ -88,8 +88,21 @@ h1, h3 {
     color: #fff;
 }
 
+#create:hover {
+    background-color: #ff0033;
+    color: #fff;
+}
+
 img {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
+}
+
+#input-novo-treino{
+    border-color: #ff0033;
+    border-radius: 1%;
+    font-weight: bold;
+    width: 200px;
+    height: 25px;
 }
