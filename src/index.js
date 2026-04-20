@@ -1,4 +1,5 @@
 const contentorTreinos = document.getElementById("lista-treinos-api");
+let deleteTrn = document.getElementById("delete");
 const urlAPI = "https://69de915cd6de26e1192812a2.mockapi.io/workout";
 
 function carregarTreinosNoInicio() {
@@ -22,7 +23,7 @@ function carregarTreinosNoInicio() {
                 item.innerHTML = `
                     <div style="text-align: left;">
                         <strong>${treino.training_list}</strong><br>
-                        <small style="color: #d31239;">${detalhes.join(" • ")}</small>
+                        <small style="color: #d31239;">${detalhes.join(" / ")}</small>
                     </div>
                 `;
                 
@@ -35,3 +36,13 @@ function carregarTreinosNoInicio() {
 }
 
 window.onload = carregarTreinosNoInicio;
+
+deleteTrn.addEventListener("click", function () {
+  const trnId = createTrn;
+
+
+  fetch(urlAPI, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  })
+});

@@ -43,7 +43,7 @@ createTrn.addEventListener("click", function () {
       throw new Error();
   })
   .then(data => {
-    alert("Treino guardado!");
+    alert("Traine created!");
     document.getElementById("input-novo-treino").value = "";
     checkboxes.forEach((c) => (c.checked = false));
   })
@@ -51,3 +51,6 @@ createTrn.addEventListener("click", function () {
     alert("Erro na ligação.");
   });
 });
+
+
+
