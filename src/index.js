@@ -22,7 +22,7 @@ function carregarTreinosNoInicio() {
                 item.innerHTML = `
                     <div style="text-align: left;">
                         <strong>${treino.training_list}</strong><br>
-                        <small style="color: #ff0033;">${detalhes.join(" • ")}</small>
+                        <small style="color: #d31239;">${detalhes.join(" • ")}</small>
                     </div>
                 `;
                 
