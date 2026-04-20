@@ -14,7 +14,6 @@ body {
     min-height: 100vh;
 }
 
-
 .header,
 .lista-treinos-header {
     width: 100%;
@@ -83,12 +82,7 @@ h1, h3 {
     margin-top: 10px;
 }
 
-.btn:hover {
-    background-color: #ff0033;
-    color: #fff;
-}
-
-#create:hover {
+.btn:hover, #create:hover {
     background-color: #ff0033;
     color: #fff;
 }
@@ -99,10 +93,21 @@ img {
     object-fit: cover;
 }
 
-#input-novo-treino{
-    border-color: #ff0033;
-    border-radius: 1%;
+.sessao-criar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#input-novo-treino {
+    width: 100%;
+    padding: 10px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #1f1f1f;
+    color: white;
+    border: 1px solid #ff0033;
     font-weight: bold;
-    width: 200px;
-    height: 25px;
 }
