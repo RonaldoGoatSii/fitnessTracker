@@ -14,12 +14,26 @@ createTrn.addEventListener("click", function () {
   });
 
   if (nomeTreino === "") {
-    alert("Escreve um nome para o treino!");
+    Swal.fire({
+      icon: "warning",
+      title: "Oops...",
+      text: "Escreve um nome para o treino!",
+      showClass: {
+        popup: "animate__animated animate__shakeX"
+      }
+    });
     return;
   }
 
   if (exerciciosSelecionados.length === 0) {
-    alert("Seleciona pelo menos um exercício!");
+    Swal.fire({
+      icon: "warning",
+      title: "Oops...",
+      text: "Seleciona pelo menos um exercício!",
+      showClass: {
+        popup: "animate__animated animate__shakeX"
+      }
+    });
     return;
   }
 
@@ -31,26 +45,50 @@ createTrn.addEventListener("click", function () {
     triceps: exerciciosSelecionados.includes("Triceps") ? "Sim" : "Não"
   };
 
+
+  Swal.fire({
+    title: "Creating the training..",
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading();
+    }
+  });
+
   fetch(urlAPI, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(novoTreino)
   })
   .then(response => {
-      if(response.ok) {
-          return response.json();
-      }
-      throw new Error();
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error();
   })
   .then(data => {
-    alert("Traine created!");
+    Swal.fire({
+      icon: "success",
+      title: "Traine created!",
+      text: "Good luck!",
+      showClass: {
+        popup: "animate__animated animate__zoomIn"
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOut"
+      }
+    });
+
     document.getElementById("input-novo-treino").value = "";
     checkboxes.forEach((c) => (c.checked = false));
   })
   .catch(error => {
-    alert("Erro na ligação.");
+    Swal.fire({
+      icon: "error",
+      title: "Erro!",
+      text: "Erro na ligação.",
+      showClass: {
+        popup: "animate__animated animate__shakeX"
+      }
+    });
   });
 });
-
-
-
