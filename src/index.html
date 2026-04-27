@@ -6,28 +6,32 @@
     <link rel="stylesheet" href="style.css">
     <title>Fitness Tracker</title>
 </head>
+
 <body>
-    
+
     <header class="header">
-        <img src="/img/fit.png">
+        <img src="/img/fit.png" alt="logo">
         <h1>Fitness Tracker</h1>
     </header>
 
     <main class="container">
-    <div class="card-inicio">
-        <p>Ready for today's training?</p>
-        <a href="treinos.html">
-            <button class="btn">Create new workout</button>
-        </a>
-    </div>
 
-    <div id="lista-treinos-api" class="lista-exercicios"></div>
-        
+        <div class="card-inicio">
+            <p>Ready for today's training?</p>
+
+            <a href="treinos.html">
+                <button class="btn">Create new workout</button>
+            </a>
+        </div>
+        <ul id="lista-treinos-api" class="lista-exercicios"></ul>
+
     </main>
 
-    <button>Delete</button>
-    <script src="index.js"></script>
+     <footer class="footer">
+        <p>© 2026 Fitness Tracker </p>
+    </footer>
 
+    <script src="index.js"></script>
 
 </body>
 </html>

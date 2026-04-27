@@ -17,7 +17,7 @@ createTrn.addEventListener("click", function () {
     Swal.fire({
       icon: "warning",
       title: "Oops...",
-      text: "Escreve um nome para o treino!",
+      text: "Write one name for the traine!",
       showClass: {
         popup: "animate__animated animate__shakeX"
       }
@@ -29,7 +29,7 @@ createTrn.addEventListener("click", function () {
     Swal.fire({
       icon: "warning",
       title: "Oops...",
-      text: "Seleciona pelo menos um exercício!",
+      text: "Select atleast one exercise!",
       showClass: {
         popup: "animate__animated animate__shakeX"
       }
