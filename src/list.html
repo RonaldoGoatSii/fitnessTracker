@@ -4,31 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Fitness Tracker</title>
+    <title>My Workouts - Fitness Tracker</title>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <img src="/img/fit.png" alt="Logo" class="logo-img">
+            <img src="img/fit.png" alt="Logo" class="logo-img">
             <div class="logo-text">FIT<span>TRACKER</span></div>
         </div>
         <ul class="nav-links">
             <li><a href="index.html">HOME</a></li>
             <li><a href="treinos.html">WORKOUTS</a></li>
-            <li><a href="list.html">LIST</a></li>
+            <li><a href="lista.html" class="active">MY LIST</a></li>
         </ul>
     </nav>
 
-    <main class="hero">
-        <div class="card-inicio">
-            <h2>Ready for your next challenge?</h2>
-            <p>Create and manage your personalized training routines.</p>
-            <a href="treinos.html">
-                <button class="btn-main">CREATE NEW WORKOUT</button>
-            </a>
-        </div>
+    <main class="container">
+        <header class="header-lista">
+            <h1>My Saved Workouts</h1>
+            <p>Manage or edit your routines</p>
+        </header>
+
+        <ul id="lista-treinos-api" class="lista-container">
+            </ul>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="index.js"></script>
 </body>
 </html>

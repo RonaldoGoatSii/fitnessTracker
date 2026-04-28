@@ -3,30 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de treinos</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Create Workout - Fitness Tracker</title>
 </head>
 <body>
-    <header class="lista-treinos-header">
-        <h3>Lista de Treinos</h3>
-    </header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="/img/fit.png" alt="Logo" class="logo-img">
+            <div class="logo-text">FIT<span>TRACKER</span></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="treinos.html">WORKOUTS</a></li>
+        </ul>
+    </nav>
 
     <main class="container">
         <div class="sessao-criar">
-            <input type="text" id="input-novo-treino" placeholder="Nome do exercício...">
-            <button id="create">Start the training</button>
-        </div>
-        
-        <ul class="lista-exercicios" id="lista-exercicios">
-            <li><input type="checkbox"> Abs</li>
-            <li><input type="checkbox"> Legs</li>
-            <li><input type="checkbox"> Biceps</li>
-            <li><input type="checkbox"> Triceps</li>
-        </ul>
+            <input type="text" id="input-novo-treino" placeholder="Name your workout (e.g. Leg Day)">
+            
+            <div class="grid-exercicios" id="lista-exercicios">
+                <label class="exercicio-card">
+                    <input type="checkbox" value="Biceps">
+                    <img src="/img/biceps.png" alt="Biceps">
+                    <span>Biceps</span>
+                </label>
 
-        <a href="index.html" class="btn btn-voltar">Back</a>
+                <label class="exercicio-card">
+                    <input type="checkbox" value="Legs">
+                    <img src="/img/quadricep.png" alt="Legs">
+                    <span>Legs</span>
+                </label>
+
+                <label class="exercicio-card">
+                    <input type="checkbox" value="Triceps">
+                    <img src="/img/triceps.png" alt="Triceps">
+                    <span>Triceps</span>
+                </label>
+
+                </div>
+
+            <button id="create">START THE TRAINING</button>
+        </div>
     </main>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="treinos.js"></script>
 </body>
