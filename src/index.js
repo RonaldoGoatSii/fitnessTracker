@@ -1,8 +1,15 @@
 const contentorTreinos = document.getElementById("lista-treinos-api");
 const urlAPI = "https://69de915cd6de26e1192812a2.mockapi.io/workout";
 
+function mostrarCarregamento() {
+    if (!contentorTreinos) return;
+    contentorTreinos.innerHTML = "<p style='text-align:center; opacity:0.7;'><em>Loading your workouts...</em></p>";
+}
+
 function carregarTreinos() {
     if (!contentorTreinos) return;
+
+    mostrarCarregamento();
 
     fetch(urlAPI)
         .then(response => response.ok ? response.json() : Promise.reject())
@@ -16,7 +23,7 @@ function carregarTreinos() {
 
             treinos.forEach(treino => {
                 const item = document.createElement("li");
-                item.className = "treino-item"; 
+                item.className = "treino-item";
 
                 let detalhes = [];
                 if (treino.abs === "Sim") detalhes.push("Abs");
@@ -31,17 +38,37 @@ function carregarTreinos() {
                         <span class="data-treino">${treino.date || ''}</span>
                     </div>
                     <div class="acoes">
-                        <button onclick="editarTreino('${treino.id}', '${treino.training_list}')" title="Edit">✏️</button>
-                        <button onclick="confirmarDelete('${treino.id}')" title="Delete">🗑️</button>
+                        <button class="btn-edit" data-id="${treino.id}" data-name="${treino.training_list}" title="Edit">✏️</button>
+                        <button class="btn-delete" data-id="${treino.id}" title="Delete">🗑️</button>
                     </div>
                 `;
                 contentorTreinos.appendChild(item);
             });
+
+            // Adicionar event listeners aos botões
+            adicionarListenersBotons();
         })
-        .catch(err => console.error("Erro ao carregar lista:", err));
+        .catch(err => {
+            contentorTreinos.innerHTML = "<p style='text-align:center; opacity:0.5; color:#ff0033;'>Error loading workouts. Try again.</p>";
+            console.error("Erro ao carregar lista:", err);
+        });
 }
 
-window.confirmarDelete = function(id) {
+function adicionarListenersBotons() {
+    document.querySelectorAll(".btn-delete").forEach(btn => {
+        btn.addEventListener("click", () => {
+            confirmarDelete(btn.dataset.id);
+        });
+    });
+
+    document.querySelectorAll(".btn-edit").forEach(btn => {
+        btn.addEventListener("click", () => {
+            editarTreino(btn.dataset.id, btn.dataset.name);
+        });
+    });
+}
+
+window.confirmarDelete = function (id) {
     Swal.fire({
         title: "Delete this workout?",
         text: "This action cannot be undone!",
@@ -55,14 +82,14 @@ window.confirmarDelete = function(id) {
             fetch(`${urlAPI}/${id}`, { method: 'DELETE' })
                 .then(() => {
                     Swal.fire("Deleted!", "Workout removed.", "success");
-                    carregarTreinos(); 
+                    carregarTreinos();
                 });
         }
     });
 };
 
 // 3. FUNÇÃO PARA EDITAR NOME (UPDATE)
-window.editarTreino = function(id, nomeAtual) {
+window.editarTreino = function (id, nomeAtual) {
     Swal.fire({
         title: "Edit Workout Name",
         input: "text",
@@ -80,7 +107,7 @@ window.editarTreino = function(id, nomeAtual) {
                 body: JSON.stringify({ training_list: result.value })
             }).then(() => {
                 Swal.fire("Updated!", "Name changed successfully.", "success");
-                carregarTreinos(); 
+                carregarTreinos();
             });
         }
     });
