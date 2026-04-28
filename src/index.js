@@ -31,8 +31,8 @@ function carregarTreinos() {
                         <span class="data-treino">${treino.date || ''}</span>
                     </div>
                     <div class="acoes">
-                        <button onclick="editarTreino('${treino.id}', '${treino.training_list}')" title="Edit">✏️</button>
-                        <button onclick="confirmarDelete('${treino.id}')" title="Delete">🗑️</button>
+                        <button class="btn-editar" data-id="${treino.id}" data-name="${treino.training_list}" title="Edit">✏️</button>
+                        <button class="btn-delete" data-id="${treino.id}" title="Delete">🗑️</button>
                     </div>
                 `;
                 contentorTreinos.appendChild(item);
@@ -41,51 +41,61 @@ function carregarTreinos() {
         .catch(err => console.error("Erro ao carregar lista:", err));
 }
 
-window.confirmarDelete = function (id) {
-    Swal.fire({
-        title: "Delete this workout?",
-        text: "This action cannot be undone!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#ff0033",
-        cancelButtonColor: "#333",
-        confirmButtonText: "Yes, delete!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch(`${urlAPI}/${id}`, { 
-                method: 'DELETE' 
-            })
-                .then(() => {
+const editarListener = document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-editar")) {
+
+        const id = e.target.dataset.id;
+        const nomeAtual = e.target.dataset.name;
+
+        Swal.fire({
+            title: "Edit Workout Name",
+            input: "text",
+            inputValue: nomeAtual,
+            showCancelButton: true,
+            confirmButtonColor: "#ff0033",
+            inputValidator: (value) => {
+                if (!value) return 'Please write a name!';
+            }
+        }).then((result) => {
+            if (result.isConfirmed && result.value) {
+                fetch(`${urlAPI}/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ training_list: result.value })
+                }).then(() => {
+                    Swal.fire("Updated!", "Name changed successfully.", "success");
+                    carregarTreinos();
+                });
+            }
+        });
+    }
+});
+
+const deleteListener = document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-delete")) {
+
+        const id = e.target.dataset.id;
+
+        Swal.fire({
+            title: "Delete this workout?",
+            text: "This action cannot be undone!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#ff0033",
+            cancelButtonColor: "#333",
+            confirmButtonText: "Yes, delete!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${urlAPI}/${id}`, {
+                    method: 'DELETE'
+                }).then(() => {
                     Swal.fire("Deleted!", "Workout removed.", "success");
                     carregarTreinos();
                 });
-        }
-    });
-};
-
-window.editarTreino = function (id, nomeAtual) {
-    Swal.fire({
-        title: "Edit Workout Name",
-        input: "text",
-        inputValue: nomeAtual,
-        showCancelButton: true,
-        confirmButtonColor: "#ff0033",
-        inputValidator: (value) => {
-            if (!value) return 'Please write a name!';
-        }
-    }).then((result) => {
-        if (result.isConfirmed && result.value) {
-            fetch(`${urlAPI}/${id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ training_list: result.value })
-            }).then(() => {
-                Swal.fire("Updated!", "Name changed successfully.", "success");
-                carregarTreinos();
-            });
-        }
-    });
-};
+            }
+        });
+    }
+});
 
 
 window.onload = carregarTreinos;
