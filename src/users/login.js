@@ -30,12 +30,14 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
                 }).then(() => {
                     window.location.href = "../index.html";
                 });
-            } else {
+            } else { 
                 Swal.fire({
                     icon: 'error',
                     title: 'Access Denied',
                     text: 'Invalid email or password.'
                 });
+                
+               email.value = ""
             }
         })
         .catch(err => {

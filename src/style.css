@@ -330,3 +330,96 @@ body {
     margin-bottom: 15px;
     font-weight: bold;
 }
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 25px 5%;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .grid-exercicios {
+        grid-template-columns: 1fr; 
+    }
+
+    .exercicio-card img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .treino-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .acoes {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .lista-container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .login-card {
+        padding: 25px;
+    }
+
+    .input-group input {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 35px 6%;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .grid-exercicios {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .treino-item {
+        padding: 15px;
+    }
+
+    .login-card {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .navbar {
+        padding: 40px 6%;
+    }
+
+    .grid-exercicios {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .lista-container {
+        max-width: 80%;
+    }
+}

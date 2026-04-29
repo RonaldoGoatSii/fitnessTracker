@@ -38,9 +38,9 @@ function loadTrainings() {
 
             let filterTrainigs;
             if (sessionUser && sessionUser.role === "admin") {
-                filterTrainigs = treinos; // Admin vê tudo
+                filterTrainigs = treinos; // Admin sees everything
             } else if (sessionUser) {
-                // An normal user only sees their own workouts
+                // A normal user only sees their own workouts
                 filterTrainigs = treinos.filter(t => String(t.userId) === String(sessionUser.id));
             } else {
                 filterTrainigs = [];
@@ -98,29 +98,52 @@ window.confirmDelete = function(id) {
     });
 };
 
-window.editTraining = function(id, nomeAtual) {
+window.editTraining = async function(id, currentName) {
+
+    // Buscar treino pelo ID
+    const treino = await fetch(`${urlAPI}/${id}`).then(r => r.json());
+
     Swal.fire({
-        title: "Edit Workout Name",
-        input: "text",
-        inputValue: nomeAtual,
+        title: "Edit Workout",
+        html: `
+            <label>Workout name:</label>
+            <input id="edit-name" class="swal2-input" value="${currentName}">
+
+            <label>Exercises:</label>
+            <div style="text-align:left; padding:10px; border:1px solid #ccc; border-radius:5px;">
+                <label><input type="checkbox" id="ex-abs" ${treino.abs === "Sim" ? "checked" : ""}> Abs</label><br>
+                <label><input type="checkbox" id="ex-legs" ${treino.legs === "Sim" ? "checked" : ""}> Legs</label><br>
+                <label><input type="checkbox" id="ex-biceps" ${treino.biceps === "Sim" ? "checked" : ""}> Biceps</label><br>
+                <label><input type="checkbox" id="ex-triceps" ${treino.triceps === "Sim" ? "checked" : ""}> Triceps</label>
+            </div>
+        `,
         showCancelButton: true,
+        confirmButtonText: "Save",
         confirmButtonColor: "#ff0033",
-        inputValidator: (value) => {
-            if (!value) return 'Please write a name!';
+        focusConfirm: false,
+        preConfirm: () => {
+            return {
+                training_list: document.getElementById("edit-name").value,
+                abs: document.getElementById("ex-abs").checked ? "Sim" : "Não",
+                legs: document.getElementById("ex-legs").checked ? "Sim" : "Não",
+                biceps: document.getElementById("ex-biceps").checked ? "Sim" : "Não",
+                triceps: document.getElementById("ex-triceps").checked ? "Sim" : "Não"
+            };
         }
-    }).then((result) => {
-        if (result.isConfirmed && result.value) {
+    }).then(result => {
+        if (result.isConfirmed) {
             fetch(`${urlAPI}/${id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ training_list: result.value })
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(result.value)
             }).then(() => {
-                Swal.fire("Updated!", "Success!", "success");
+                Swal.fire("Updated!", "Workout updated successfully.", "success");
                 loadTrainings();
             });
         }
     });
 };
+
 
 window.logout = function() {
     localStorage.removeItem("sessionUser");

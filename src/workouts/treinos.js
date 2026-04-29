@@ -2,19 +2,11 @@ const urlAPI = "https://69de915cd6de26e1192812a2.mockapi.io/workout";
 const sessionUser = JSON.parse(localStorage.getItem("sessionUser"));
 
 function createWorkout() {
-    // 1. Verificar login
-    if (!sessionUser) {
-        Swal.fire("Error", "You must be logged in to create a workout!", "error");
-        return;
-    }
 
-    // 2. Pegar o input do nome (usando o ID exato do teu HTML)
     const inputNome = document.getElementById("input-novo-treino");
-    
-    // 3. Pegar todos os checkboxes dentro da grid
+
     const checkboxes = document.querySelectorAll('#lista-exercicios input[type="checkbox"]');
     
-    // Criamos um objeto para mapear o que foi selecionado
     let escolhas = {
         Biceps: "Não",
         Legs: "Não",
@@ -22,7 +14,6 @@ function createWorkout() {
         Abs: "Não"
     };
 
-    // Percorrer os checkboxes para ver quais estão marcados
     checkboxes.forEach(box => {
         if (box.checked) {
             escolhas[box.value] = "Sim";
