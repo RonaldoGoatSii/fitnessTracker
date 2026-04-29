@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,19 +15,23 @@
         </div>
         <ul class="nav-links">
             <li><a href="index.html">HOME</a></li>
-            <li><a href="treinos.html">WORKOUTS</a></li>
-            <li><a href="list.html">LIST</a></li>
+            <li id="nav-workout-li" style="display: none;"><a href="workouts/treinos.html">WORKOUTS</a></li>
+            <li id="nav-list-li" style="display: none;"><a href="workouts/list.html">LIST</a></li>
+
+            <li id="nav-login-li"><a href="users/login.html">LOGIN</a></li>
+            <li id="nav-logout-li" style="display: none;"><a href="#" onclick="logout()">LOGOUT</a></li>
         </ul>
     </nav>
 
     <main class="hero">
         <div class="card-inicio">
-            <h2>Ready for your next challenge?</h2>
+            <h2 id="welcome-message">Ready for your next challenge?</h2>
             <p>Create and manage your personalized training routines.</p>
         </div>
     </main>
 
-    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="workouts/index.js"></script>
 </body>
 
 </html>

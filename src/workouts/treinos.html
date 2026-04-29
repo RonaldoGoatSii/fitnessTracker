@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Create Workout - Fitness Tracker</title>
 </head>
 
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <img src="/img/fit.png" alt="Logo" class="logo-img">
+            <img src="../../img/fit.png" alt="Logo" class="logo-img">
             <div class="logo-text">FITNESS<span>TRACKER</span></div>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">HOME</a></li>
+            <li><a href="../index.html">HOME</a></li>
             <li><a href="treinos.html">MY WORKOUTS</a></li>
             <li><a href="list.html">LIST</a></li>
         </ul>
@@ -28,31 +28,31 @@
             <div class="grid-exercicios" id="lista-exercicios">
                 <label class="exercicio-card">
                     <input type="checkbox" value="Biceps">
-                    <img src="/img/biceps.png" alt="Biceps">
+                    <img src="../../img/biceps.png" alt="Biceps">
                     <span>Biceps</span>
                 </label>
 
                 <label class="exercicio-card">
                     <input type="checkbox" value="Legs">
-                    <img src="/img/quadricep.png" alt="Legs">
+                    <img src="../../img/quadricep.png" alt="Legs">
                     <span>Legs</span>
                 </label>
 
                 <label class="exercicio-card">
                     <input type="checkbox" value="Triceps">
-                    <img src="/img/triceps.png" alt="Triceps">
+                    <img src="../../img/triceps.png" alt="Triceps">
                     <span>Triceps</span>
                 </label>
 
                 <label class="exercicio-card">
                     <input type="checkbox" value="Abs">
-                    <img src="/img/abdominal.png" alt="Abs">
+                    <img src="../../img/abdominal.png" alt="Abs">
                     <span>ABS</span>
                 </label>
 
             </div>
 
-            <button id="create">START THE TRAINING</button>
+            <button type="button" onclick="createWorkout()" class="btn-main">CREATE WORKOUT</button>
         </div>
     </main>
 

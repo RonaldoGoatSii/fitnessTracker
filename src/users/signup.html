@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker - Sign Up</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <form id="signupForm" class="login-card">
+            <h2>Create Account</h2>
+            
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="signupName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" id="signupEmail" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="signupPassword" placeholder="Create a password" required>
+            </div>
+
+            <div class="input-group">
+                <label>Age</label>
+                <input type="number" id="signupAge" placeholder="Your age" required>
+            </div>
+
+            <button type="submit" class="btn-primary">Sign Up</button>
+            
+            <p class="footer-text">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="signup.js"></script>
+</body>
+</html>
