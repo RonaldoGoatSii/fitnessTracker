@@ -28,7 +28,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
                     timer: 1500,
                     showConfirmButton: false
                 }).then(() => {
-                    window.location.href = "../index.html";
+                    window.location.href = "../../index.html";
                 });
             } else { 
                 Swal.fire({

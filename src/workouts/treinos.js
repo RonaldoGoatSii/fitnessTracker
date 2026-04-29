@@ -51,7 +51,7 @@ function createWorkout() {
     .then(res => {
         if (res.ok) {
             Swal.fire("Success!", "Workout created!", "success").then(() => {
-                window.location.href = "../index.html"; 
+                window.location.href = "../../index.html"; 
             });
         } else {
             Swal.fire("Error", "Failed to save to database", "error");
