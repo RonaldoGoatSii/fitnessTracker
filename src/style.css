@@ -10,6 +10,185 @@ body {
     color: #fff;
 }
 
+/* HERO SECTION */
+.hero-section {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #ccc;
+}
+
+.hero-btn {
+    padding: 12px 25px;
+    background: #ff0033;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background: #cc002a;
+}
+
+/* HIGHLIGHTS */
+.highlights {
+    margin: 60px auto;
+    text-align: center;
+}
+
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.highlight-card {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.highlight-card:hover {
+    border-color: #ff0033;
+}
+
+.highlight-card img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+/* HOW IT WORKS */
+.how-it-works {
+    margin: 60px auto;
+    text-align: center;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.step-card {
+    background: #111;
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.step-card:hover {
+    border-color: #ff0033;
+}
+
+.step-card span {
+    display: inline-block;
+    background: #ff0033;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+    margin: 60px auto;
+    text-align: center;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.testimonial-card {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    font-style: italic;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.testimonial-card:hover {
+    border-color: #ff0033;
+}
+
+/* CTA FINAL */
+.cta {
+    margin: 80px auto;
+    text-align: center;
+    padding: 40px;
+    background: #1a1a1a;
+    border-radius: 15px;
+}
+
+.cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #ff0033;
+    color: #fff;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: #cc002a;
+}
+
+
+.testimonials-carousel, h2 {
+    align-items: center;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.carousel-auto {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-track-auto {
+    display: flex;
+    animation: slide 70s linear infinite;
+    gap: 25px; 
+}
+
+.carousel-item-auto {
+    flex: 0 0 30%;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-300%); }
+}
+
 
 /* Navbar */
 .navbar {
@@ -87,6 +266,29 @@ body {
 }
 
 /* treinos.html */
+
+#input-novo-treino {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #1a1a1a;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+#input-novo-treino::placeholder {
+    color: #888;
+}
+
+#input-novo-treino:focus {
+    border-color: #ff0033;
+    transition: 0.5s;
+}
+
+
 .grid-exercicios {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 colunas */
