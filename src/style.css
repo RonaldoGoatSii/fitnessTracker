@@ -533,12 +533,11 @@ body {
     font-weight: bold;
 }
 
-/* RESPONSIVE DESIGN */
 
 @media (max-width: 480px) {
 
     .navbar {
-        padding: 25px 5%;
+        padding: 20px 5%;
         flex-direction: column;
         gap: 15px;
         text-align: center;
@@ -546,15 +545,29 @@ body {
 
     .nav-links {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
     }
 
-    .nav-links a {
-        font-size: 0.9rem;
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .highlight-grid,
+    .steps-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel-item-auto {
+        flex: 0 0 80%;
     }
 
     .grid-exercicios {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
     }
 
     .exercicio-card img {
@@ -562,10 +575,12 @@ body {
         height: 60px;
     }
 
+    /* Lista */
     .treino-item {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+        padding: 15px;
     }
 
     .acoes {
@@ -579,6 +594,7 @@ body {
         padding: 0 10px;
     }
 
+    /* Login */
     .login-card {
         padding: 25px;
     }
@@ -588,14 +604,27 @@ body {
     }
 }
 
+
 @media (max-width: 768px) {
 
     .navbar {
-        padding: 35px 6%;
+        padding: 30px 6%;
     }
 
     .nav-links a {
         font-size: 0.9rem;
+    }
+
+    /* Grids viram 2 colunas */
+    .highlight-grid,
+    .steps-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Carrossel */
+    .carousel-item-auto {
+        flex: 0 0 45%;
     }
 
     .grid-exercicios {
@@ -611,14 +640,23 @@ body {
     }
 }
 
+
 @media (max-width: 1200px) {
 
     .navbar {
-        padding: 40px 6%;
+        padding: 35px 6%;
     }
 
-    .grid-exercicios {
-        grid-template-columns: repeat(3, 1fr);
+    /* Grids viram 2 colunas */
+    .highlight-grid,
+    .steps-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Carrossel */
+    .carousel-item-auto {
+        flex: 0 0 35%;
     }
 
     .lista-container {
