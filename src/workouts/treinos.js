@@ -20,13 +20,19 @@ function createWorkout() {
         }
     });
 
-    // 4. Validação
     if (!inputNome.value.trim()) {
         Swal.fire("Wait!", "Please name your workout first.", "info");
         return;
     }
 
-    // 5. Montar o objeto para a API
+    const algumSelecionado = Object.values(escolhas).includes("Sim");
+
+    if (!algumSelecionado) {
+        Swal.fire("Wait!", "Please select at least one exercise.", "warning");
+        return;
+    }
+
+  
     const newTraining = {
         training_list: inputNome.value,
         biceps: escolhas["Biceps"],
@@ -40,7 +46,6 @@ function createWorkout() {
     let storedTrainings = JSON.parse(localStorage.getItem("localTrainings")) || [];
     storedTrainings.push(newTraining);
     localStorage.setItem("localTrainings", JSON.stringify(storedTrainings));
-
 
     Swal.fire({
         title: 'Saving...',
