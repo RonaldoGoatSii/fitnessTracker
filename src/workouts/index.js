@@ -182,7 +182,8 @@ window.editTraining = async function(id, currentName) {
 
 window.logout = function() {
     localStorage.removeItem("sessionUser");
-    window.location.href = "../../index.html";
+    window.location.href = "./index.html";
+
 };
 
 window.onload = function() {
