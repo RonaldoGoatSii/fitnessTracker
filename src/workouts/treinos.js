@@ -37,6 +37,10 @@ function createWorkout() {
         userId: sessionUser.id 
     };
 
+    let storedTrainings = JSON.parse(localStorage.getItem("localTrainings")) || [];
+    storedTrainings.push(newTraining);
+    localStorage.setItem("localTrainings", JSON.stringify(storedTrainings));
+
 
     Swal.fire({
         title: 'Saving...',
