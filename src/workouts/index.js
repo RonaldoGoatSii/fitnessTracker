@@ -99,31 +99,60 @@ window.confirmDelete = function(id) {
 };
 
 window.editTraining = async function(id, currentName) {
-
-    // Buscar treino pelo ID
     const treino = await fetch(`${urlAPI}/${id}`).then(r => r.json());
+
+    const imgPath = "../../img/";
 
     Swal.fire({
         title: "Edit Workout",
         html: `
-            <label>Workout name:</label>
-            <input id="edit-name" class="swal2-input" value="${currentName}">
+            <div style="text-align: left; color: #fff;">
+                <label style="font-weight:bold; color:#ff0033;">Workout name:</label>
+                <input id="edit-name" class="swal2-input" value="${currentName}" style="margin-bottom: 20px;">
 
-            <label>Exercises:</label>
-            <div style="text-align:left; padding:10px; border:1px solid #ccc; border-radius:5px;">
-                <label><input type="checkbox" id="ex-abs" ${treino.abs === "Sim" ? "checked" : ""}> Abs</label><br>
-                <label><input type="checkbox" id="ex-legs" ${treino.legs === "Sim" ? "checked" : ""}> Legs</label><br>
-                <label><input type="checkbox" id="ex-biceps" ${treino.biceps === "Sim" ? "checked" : ""}> Biceps</label><br>
-                <label><input type="checkbox" id="ex-triceps" ${treino.triceps === "Sim" ? "checked" : ""}> Triceps</label>
+                <label style="font-weight:bold; color:#ff0033; display:block; margin-bottom:10px;">Exercises:</label>
+                <div style="display: flex; flex-direction: column; gap: 10px; background: #222; padding: 15px; border-radius: 10px; border: 1px solid #444;">
+                    
+                    <label style="display: flex; align-items: center; gap: 15px; cursor: pointer;">
+                        <input type="checkbox" id="ex-abs" ${treino.abs === "Sim" ? "checked" : ""}>
+                        <img src="${imgPath}abdominal.png" width="30" height="30" style="object-fit: contain;">
+                        <span>Abs</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 15px; cursor: pointer;">
+                        <input type="checkbox" id="ex-legs" ${treino.legs === "Sim" ? "checked" : ""}>
+                        <img src="${imgPath}quadricep.png" width="30" height="30" style="object-fit: contain;">
+                        <span>Legs</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 15px; cursor: pointer;">
+                        <input type="checkbox" id="ex-biceps" ${treino.biceps === "Sim" ? "checked" : ""}>
+                        <img src="${imgPath}biceps.png" width="30" height="30" style="object-fit: contain;">
+                        <span>Biceps</span>
+                    </label>
+
+                    <label style="display: flex; align-items: center; gap: 15px; cursor: pointer;">
+                        <input type="checkbox" id="ex-triceps" ${treino.triceps === "Sim" ? "checked" : ""}>
+                        <img src="${imgPath}triceps.png" width="30" height="30" style="object-fit: contain;">
+                        <span>Triceps</span>
+                    </label>
+                </div>
             </div>
         `,
+        background: '#161616', 
         showCancelButton: true,
-        confirmButtonText: "Save",
+        confirmButtonText: "Save Changes",
         confirmButtonColor: "#ff0033",
+        cancelButtonColor: "#444",
         focusConfirm: false,
         preConfirm: () => {
+            const name = document.getElementById("edit-name").value;
+            if (!name) {
+                Swal.showValidationMessage("Please enter a name");
+                return false;
+            }
             return {
-                training_list: document.getElementById("edit-name").value,
+                training_list: name,
                 abs: document.getElementById("ex-abs").checked ? "Sim" : "Não",
                 legs: document.getElementById("ex-legs").checked ? "Sim" : "Não",
                 biceps: document.getElementById("ex-biceps").checked ? "Sim" : "Não",
@@ -137,8 +166,14 @@ window.editTraining = async function(id, currentName) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(result.value)
             }).then(() => {
-                Swal.fire("Updated!", "Workout updated successfully.", "success");
-                loadTrainings();
+                Swal.fire({
+                    title: "Updated!",
+                    text: "Workout updated successfully.",
+                    icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false 
+                });
+                loadTrainings(); 
             });
         }
     });
