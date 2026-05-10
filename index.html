@@ -17,103 +17,118 @@
             <li><a href="index.html">HOME</a></li>
             <li id="nav-workout-li" style="display: none;"><a href="src/workouts/treinos.html">WORKOUTS</a></li>
             <li id="nav-list-li" style="display: none;"><a href="src/workouts/list.html">LIST</a></li>
-
             <li id="nav-login-li"><a href="src/users/login.html">LOGIN</a></li>
             <li id="nav-logout-li" style="display: none;"><a href="#" onclick="logout()">LOGOUT</a></li>
         </ul>
     </nav>
 
     <main class="hero">
-    <section class="highlights">
-        <h2>Why FitnessTracker?</h2>
-        <div class="highlight-grid">
-            <div class="highlight-card">
-                <img src="img/icon-workout.png" alt="">
-                <h3>Custom Workouts</h3>
-                <p>Create routines tailored to your goals.</p>
+        <section class="highlights">
+            <h2>Why FitnessTracker?</h2>
+            <div class="highlight-grid">
+                <highlight-card
+                    icon="img/icon-workout.png"
+                    title="Custom Workouts"
+                    description="Create routines tailored to your goals.">
+                </highlight-card>
+
+                <highlight-card
+                    icon="img/icon-progress.png"
+                    title="Track Progress"
+                    description="Monitor your evolution over time.">
+                </highlight-card>
+
+                <highlight-card
+                    icon="img/icon-community.png"
+                    title="Stay Motivated"
+                    description="Stay consistent and challenge yourself.">
+                </highlight-card>
             </div>
+        </section>
 
-            <div class="highlight-card">
-                <img src="img/icon-progress.png" alt="">
-                <h3>Track Progress</h3>
-                <p>Monitor your evolution over time.</p>
+        <section class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps-grid">
+                <step-card number="1" title="Create Your Workout"
+                    description="Choose a name and start building your routine.">
+                </step-card>
+
+                <step-card number="2" title="Add Exercises"
+                    description="Select exercises from our library and customize reps & sets.">
+                </step-card>
+
+                <step-card number="3" title="Track & Improve"
+                    description="Follow your progress and stay consistent.">
+                </step-card>
             </div>
+        </section>
 
-            <div class="highlight-card">
-                <img src="img/icon-community.png" alt="">
-                <h3>Stay Motivated</h3>
-                <p>Stay consistent and challenge yourself.</p>
+        <section class="testimonials-carousel">
+            <h2>User's Feedback</h2>
+            <div class="carousel-auto">
+                <div class="carousel-track-auto">
+                    <testimonial-card quote="FitnessTracker helped me stay consistent and organized. Love it!" author="Ana, 24"></testimonial-card>
+                    <testimonial-card quote="Finally a clean and simple way to manage my workouts." author="João, 31"></testimonial-card>
+                    <testimonial-card quote="I improved my routine and motivation thanks to this platform." author="Marta, 28"></testimonial-card>
+                    <testimonial-card quote="The best tool I've used to track my training evolution." author="Ricardo, 29"></testimonial-card>
+                    <testimonial-card quote="FitnessTracker helped me stay consistent and organized. Love it!" author="Ana, 24"></testimonial-card>
+                    <testimonial-card quote="Finally a clean and simple way to manage my workouts." author="João, 31"></testimonial-card>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="how-it-works">
-        <h2>How It Works</h2>
-        <div class="steps-grid">
-            <div class="step-card">
-                <span>1</span>
-                <h3>Create Your Workout</h3>
-                <p>Choose a name and start building your routine.</p>
-            </div>
+    <script>
 
-            <div class="step-card">
-                <span>2</span>
-                <h3>Add Exercises</h3>
-                <p>Select exercises from our library and customize reps & sets.</p>
-            </div>
+        class HighlightCard extends HTMLElement {
+            connectedCallback() {
+                const icon  = this.getAttribute('icon');
+                const title = this.getAttribute('title');
+                const desc  = this.getAttribute('description');
 
-            <div class="step-card">
-                <span>3</span>
-                <h3>Track & Improve</h3>
-                <p>Follow your progress and stay consistent.</p>
-            </div>
-        </div>
-    </section>
+                this.classList.add('highlight-card');
+                this.innerHTML = `
+                    <img src="${icon}" alt="">
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
+                `;
+            }
+        }
+        customElements.define('highlight-card', HighlightCard);
 
-    <section class="testimonials-carousel">
-    <h2>User's Feedback</h2>
+        class StepCard extends HTMLElement {
+            connectedCallback() {
+                const number = this.getAttribute('number');
+                const title  = this.getAttribute('title');
+                const desc   = this.getAttribute('description');
 
-    <div class="carousel-auto">
-        <div class="carousel-track-auto">
+                this.classList.add('step-card');
+                this.innerHTML = `
+                    <span>${number}</span>
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
+                `;
+            }
+        }
+        customElements.define('step-card', StepCard);
 
-            <div class="carousel-item-auto">
-                <p>"FitnessTracker helped me stay consistent and organized. Love it!"</p>
-                <h4>- Ana, 24</h4>
-            </div>
+      
+        class TestimonialCard extends HTMLElement {
+            connectedCallback() {
+                const quote  = this.getAttribute('quote');
+                const author = this.getAttribute('author');
 
-            <div class="carousel-item-auto">
-                <p>"Finally a clean and simple way to manage my workouts."</p>
-                <h4>- João, 31</h4>
-            </div>
-
-            <div class="carousel-item-auto">
-                <p>"I improved my routine and motivation thanks to this platform."</p>
-                <h4>- Marta, 28</h4>
-            </div>
-
-            <div class="carousel-item-auto">
-                <p>"The best tool I've used to track my training evolution."</p>
-                <h4>- Ricardo, 29</h4>
-            </div>
-
-            <div class="carousel-item-auto">
-                <p>"FitnessTracker helped me stay consistent and organized. Love it!"</p>
-                <h4>- Ana, 24</h4>
-            </div>
-
-            <div class="carousel-item-auto">
-                <p>"Finally a clean and simple way to manage my workouts."</p>
-                <h4>- João, 31</h4>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
+                this.classList.add('carousel-item-auto');
+                this.innerHTML = `
+                    <p>"${quote}"</p>
+                    <h4>- ${author}</h4>
+                `;
+            }
+        }
+        customElements.define('testimonial-card', TestimonialCard);
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="src/workouts/index.js"></script>
 </body>
-
 </html>
