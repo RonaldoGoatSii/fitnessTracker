@@ -27,19 +27,16 @@
             <h2>Why FitnessTracker?</h2>
             <div class="highlight-grid">
                 <highlight-card
-                    icon="img/icon-workout.png"
                     title="Custom Workouts"
                     description="Create routines tailored to your goals.">
                 </highlight-card>
 
                 <highlight-card
-                    icon="img/icon-progress.png"
                     title="Track Progress"
                     description="Monitor your evolution over time.">
                 </highlight-card>
 
                 <highlight-card
-                    icon="img/icon-community.png"
                     title="Stay Motivated"
                     description="Stay consistent and challenge yourself.">
                 </highlight-card>
@@ -82,13 +79,11 @@
 
         class HighlightCard extends HTMLElement {
             connectedCallback() {
-                const icon  = this.getAttribute('icon');
                 const title = this.getAttribute('title');
                 const desc  = this.getAttribute('description');
 
                 this.classList.add('highlight-card');
                 this.innerHTML = `
-                    <img src="${icon}" alt="">
                     <h3>${title}</h3>
                     <p>${desc}</p>
                 `;
